@@ -25,10 +25,11 @@ let totalVotes = 0;
 const delay = 3; //tempo padrao que mostra o card com a resposta (em segundos)
 
 function App() {
-  const [quote, setQuote] = useState(quotesList[0]); //vamos pegar um quote random pra começar o game
+  const [quote, setQuote] = useState(quotesList[quoteIndex]); //vamos pegar um quote random pra começar o game
   const [reply, setReply] = useState("");
   const [rightAnswer, setrightAnswer] = useState(null); //a última resposta foi certa ou errada?
   const [intro, setIntro] = useState("");
+  const [source, setSource] = useState("");
   const [sentenceNumber, setSentenceNumber] = useState(1);
   const [showButtons, setShowButtons] = useState(true);
   const [gameOver, setGameOver] = useState(false);
@@ -44,11 +45,14 @@ function App() {
     if (quote.bolsonaro) {
       //se bolso era o autor
       let newReply = getNewElement(bolsonaroAutor, reply); //pega info falando q era ele
-      setReply(`${newReply}\nFonte: ${quote.fonte}`); //coloca no card
+      setReply(newReply); //coloca no card
+      setSource(quote.fonte);
     } else {
       setReply(quote.fonte); //coloca no card info sobre o real autor
+      setSource("");
     }
     let newIntro; //a intro contém tipo uma afirmação ou negação, dependendo se acertou ou errou
+
     if ((event === 1 && quote.bolsonaro) || (event === 0 && !quote.bolsonaro)) {
       //se acertou
       setrightAnswer(1);
@@ -87,7 +91,10 @@ function App() {
           <button onClick={() => handleVote(0)}>Não</button>
         </>
       );
-    else return <>{`Próxima pergunta vindo em ${counter} segundos`}</>;
+    else
+      return (
+        <>{`Próxima pergunta vindo automaticamente em ${counter} segundos`}</>
+      );
   };
 
   if (!gameOver)
@@ -105,7 +112,12 @@ function App() {
           <br />
           <br />
         </div>
-        <Card2 intro={intro} message={reply} msgStatus={rightAnswer} />
+        <Card2
+          intro={intro}
+          reply={reply}
+          source={source}
+          msgStatus={rightAnswer}
+        />
         <div></div>
       </div>
     );
