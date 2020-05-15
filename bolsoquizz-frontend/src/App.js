@@ -20,62 +20,70 @@ const getNewElement = (array, previousElement) => {
 };
 
 let quoteIndex = getRandomIndex(quotesList);
-let totalRightAnswers = 0;
-let totalVotes = 0;
-const delay = 3; //tempo padrao que mostra o card com a resposta (em segundos)
+
+let [
+  totalRightAnswers,
+  totalVotes,
+  sentenceNumber, // sentence 1/14, etc
+  delay, //length of countdown to next sentence
+  img, //name of file containing the author of the sentence
+  caption,
+  source, //if author == bolsonaro contains a link proving the sentence is his, otherwise contains a small paragraph describing the real author
+  rightAnswer, //did you get it right?
+] = [0, 0, 1, 4, "", "", "", null];
 
 function App() {
   const [quote, setQuote] = useState(quotesList[quoteIndex]); //vamos pegar um quote random pra começar o game
   const [reply, setReply] = useState("");
-  const [rightAnswer, setrightAnswer] = useState(null); //a última resposta foi certa ou errada?
   const [intro, setIntro] = useState("");
-  const [source, setSource] = useState("");
-  const [sentenceNumber, setSentenceNumber] = useState(1);
   const [showButtons, setShowButtons] = useState(true);
   const [gameOver, setGameOver] = useState(false);
 
   const handleVote = (event) => {
-    setShowButtons(false); //some com os botões de votar
+    setShowButtons(false); //disappear with the voting buttons
     totalVotes += 1;
     if (totalVotes === 14) {
       setGameOver(true);
-      return;
     }
 
     if (quote.bolsonaro) {
       //se bolso era o autor
-      let newReply = getNewElement(bolsonaroAutor, reply); //pega info falando q era ele
-      setReply(newReply); //coloca no card
-      setSource(quote.fonte);
+      let newReply = getNewElement(bolsonaroAutor, reply); //fetch info saying he is the author
+      setReply(newReply); //put it in the card
+      source = quote.fonte;
+      img = "feliz01.jpg";
+      caption = "Jair Bolsonaro";
     } else {
-      setReply(quote.fonte); //coloca no card info sobre o real autor
-      setSource("");
+      setReply(quote.fonte);
+      source = "";
+      img = quote.img;
+      caption = quote.caption;
     }
-    let newIntro; //a intro contém tipo uma afirmação ou negação, dependendo se acertou ou errou
+    let newIntro; //the intro contains an affirmative or negative statement, depending on whether the user got the question right
 
     if ((event === 1 && quote.bolsonaro) || (event === 0 && !quote.bolsonaro)) {
       //se acertou
-      setrightAnswer(1);
+      rightAnswer = 1;
       totalRightAnswers += 1;
       newIntro = getNewElement(positiveIntros, intro);
       setIntro(newIntro);
     } else {
-      setrightAnswer(0);
+      rightAnswer = 0;
       newIntro = getNewElement(negativeIntros, intro);
       setIntro(newIntro);
     }
 
-    //transição para a próxima pergunta, executada depois de 'delay' segundos
+    //transition to next sequence, executed after 'delay' seconds
     setTimeout(() => {
-      setSentenceNumber(sentenceNumber + 1); //question 1/14 etc
+      sentenceNumber = sentenceNumber + 1; //question 1/14 etc
       quotesList.splice(quoteIndex, 1); //remove answered question from array
       quoteIndex = getRandomIndex(quotesList);
       setQuote(quotesList[quoteIndex]); //render next question
-      setShowButtons(true); //volta os botoes de voto
+      setShowButtons(true); //return with the voting buttons
       setIntro("");
       setReply("");
     }, delay * 1000);
-  }; //fim handleVote
+  }; //end of handleVote
 
   const RenderButtons = ({ handleVote, showButtons }) => {
     const [counter, setCounter] = useState(delay);
@@ -117,15 +125,29 @@ function App() {
           reply={reply}
           source={source}
           msgStatus={rightAnswer}
+          img={img}
+          caption={caption}
         />
-        <div></div>
       </div>
     );
+  //game over
   else
     return (
-      <div style={msgStyleSuccess}>
-        <p>Game Over!</p>
-        <p>Score: {`${totalRightAnswers}/${totalVotes}`}</p>
+      <div className="App">
+        <div style={msgStyleSuccess}>
+          <p>Game Over!</p>
+          <p>Score: {`${totalRightAnswers}/${totalVotes}`}</p>
+        </div>
+        <div>
+          <br />
+          <br />
+        </div>
+        <Card2
+          intro={intro}
+          reply={reply}
+          source={source}
+          msgStatus={rightAnswer}
+        />
       </div>
     );
 } //fim App

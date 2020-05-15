@@ -1,7 +1,7 @@
 import React from "react";
 import { msgStyleSuccess, msgStyleError } from "./StringsNStyles";
 
-const Card2 = ({ intro, reply, source, msgStatus }) => {
+const Card2 = ({ intro, reply, source, msgStatus, img, caption }) => {
   let msgStyle;
   if (msgStatus === 0) msgStyle = msgStyleError;
   else msgStyle = msgStyleSuccess;
@@ -15,6 +15,13 @@ const Card2 = ({ intro, reply, source, msgStatus }) => {
   else
     return (
       <div style={msgStyle}>
+        <figure>
+          <img src={`./img/${img}`} alt="imagem do autor da sentença" />
+          <figcaption>
+            <em>{caption}</em>
+          </figcaption>
+        </figure>
+        <p></p>
         <p>{intro}</p>
         <p>{reply}</p>
         {renderSource(source)}

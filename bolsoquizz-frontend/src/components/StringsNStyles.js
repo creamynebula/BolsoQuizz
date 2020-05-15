@@ -49,12 +49,16 @@ const quotesList = [
     frase:
       "A solidariedade é o sentimento que melhor expressa o respeito pela dignidade humana.",
     bolsonaro: false,
+    img: "kafka.jpg",
+    caption: "Franz Kafka",
     fonte:
       'A frase é de autoria de Franz Kafka, considerado um dos maiores escritores do século 20, autor das cultuadas obras "A Metamorfose" e "O Processo".',
   },
   {
     frase: "Todos os tipos de coisas neste mundo se comportam como espelhos.",
     bolsonaro: false,
+    img: "jacques-lacan.jpg",
+    caption: "Jacques Lacan",
     fonte:
       "Quem disse isso foi o francês Jacques Lacan, um dos pioneiros da psicanálise.",
   },
@@ -62,6 +66,8 @@ const quotesList = [
     frase:
       "Não é possível discutir racionalmente com alguém que prefere matar-nos a ser convencido pelos nossos argumentos.",
     bolsonaro: false,
+    img: "karl-popper.jpg",
+    caption: "Karl Popper",
     fonte:
       "O autor da sóbria mensagem é Karl Popper, filósofo da ciência e grande defensor da democracia liberal.",
   },
@@ -69,13 +75,17 @@ const quotesList = [
     frase:
       "Não creio ser um homem que saiba. Tenho sido sempre um homem que busca, mas já agora não busco mais nas estrelas e nos livros: começo a ouvir os ensinamentos que o meu sangue murmura em mim.",
     bolsonaro: false,
+    img: "hermann-hesse.jpg",
+    caption: "Hermann Hesse",
     fonte:
-      'A sentença é de autoria de Hermann Hesse, escritor e pintor alemão, receptor do prêmio Goethe e do Nobel de Literatura. Conhecido pela autoria das obras "O lobo da Estepe", "Sidarta" e "O Jogo das Contas de Vidro" ',
+      'A sentença é de autoria de Hermann Hesse, escritor e pintor alemão, receptor do prêmio Goethe e do Nobel de Literatura. Conhecido pela autoria das obras "O Lobo da Estepe", "Sidarta" e "O Jogo das Contas de Vidro" ',
   },
   {
     frase:
       "Maturidade é aprender a se afastar de pessoas e situações que ameaçam a paz de sua mente, seu respeito por si próprio, valores, moral e auto-estima.",
     bolsonaro: false,
+    img: "buddha.png",
+    caption: "Estátua do Buddha",
     fonte:
       "A lição sobre inteligência emocional vem de Siddhartha Gautama, o Buddha.",
   },
@@ -83,12 +93,16 @@ const quotesList = [
     frase:
       "Aprendi o silêncio com os faladores, a tolerância com os intolerantes, a bondade com os maldosos; e, por estranho que pareça, sou grato a esses professores.",
     bolsonaro: false,
+    img: "khalil-gibran.jpg",
+    caption: "Khalil Gibran",
     fonte:
       'A mensagem sobre tolerância é de Khalil Gibran, poeta, pintor e filósofo libanês, mais conhecido pela autoria do livro "O Profeta".',
   },
   {
     frase: "Nós não vemos as coisas como elas são, vemo-las como nós somos.",
     bolsonaro: false,
+    img: "anais-nin.jpg",
+    caption: "Anaïs Nin",
     fonte:
       "Quem disse isso foi a escritora francesa Anaïs Nin, nos levando a refletir sobre como o conteúdo do que dizemos diz muito sobre quem somos.",
   },
@@ -124,12 +138,10 @@ const bolsonaroAutor = [
   "Foi o presidente quem disse isso.",
 ];
 
-const fim = "Você terminou o jogo!";
-
 const msgStyleSuccess = {
   fontSize: 18,
-  color: "chartreuse",
-  background: "navy",
+  color: "#00214d",
+  background: "#00ebc7",
   borderStyle: "solid",
   borderRadius: "5px",
   padding: "10px",
@@ -138,8 +150,8 @@ const msgStyleSuccess = {
 
 const msgStyleError = {
   fontSize: 18,
-  color: "red",
-  background: "lightgrey",
+  color: "#00214d",
+  background: "#ff5470",
   borderStyle: "solid",
   borderRadius: "5px",
   padding: "10px",
@@ -151,7 +163,6 @@ export {
   positiveIntros,
   negativeIntros,
   bolsonaroAutor,
-  fim,
   msgStyleSuccess,
   msgStyleError,
 };
