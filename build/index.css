@@ -1,0 +1,65 @@
+body {
+  background-color: #fffffe;
+  background-image: url("./img/brasilia11.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center top;
+  color: #00214d;
+}
+
+img {
+  border-radius: 20%;
+  max-width: 18vw;
+  max-height: 15vw;
+  padding: 5px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figcaption {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #00214d;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  color: #001858;
+  background-color: #00ebc7;
+  font-size: 18px;
+  border: solid 3px;
+  width: 15vw;
+  margin: 5px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: #fde24f;
+}
+
+.gradientText {
+  position: relative;
+  color: transparent;
+  transition-duration: 0.3s;
+  background: linear-gradient(
+      to right,
+      #13f3b9 0%,
+      #5878f3 50%,
+      transparent 50%
+    )
+    100% 0 / 200% 200% #474e51;
+  background-clip: text;
+}
+
+.gradientText:hover {
+  background-position: 0 0;
+}
