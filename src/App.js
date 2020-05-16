@@ -166,13 +166,13 @@ function App() {
         <div style={msgStyleSuccess}>
           <p>Game Over! Score: {`${totalRightAnswers}/${totalVotes}`}</p>
           <p>{congratulationsMessage()}</p>
-          <p></p>
+          <br />
           <p>
             Obrigado por jogar, espero que as sentenças tenham sido
             interessantes de alguma forma (´｡• ω •｡`). Se você gostou, mostre
             pros seus amigos!
           </p>
-          <p></p>
+          <br />
           <p>
             Feedback, trocar algum tipo de idéia ou oferta de trabalho (por
             favor haha):{" "}
