@@ -144,13 +144,14 @@ function App() {
               {sentenceNumber}/14 - "{quote.frase}"
             </p>
           </div>
+
           <br />
           <p>O autor da frase é o presidente Jair Bolsonaro?</p>
         </div>
         <div>
           <RenderButtons handleVote={handleVote} showButtons={showButtons} />
         </div>
-        <CSSTransition in={fade} timeout={300} classNames="fade" unmountOnExit>
+        <CSSTransition in={fade} timeout={250} classNames="fade" unmountOnExit>
           <Card2
             intro={intro}
             reply={reply}

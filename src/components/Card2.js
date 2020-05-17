@@ -2,7 +2,7 @@ import React from "react";
 import { msgStyleSuccess, msgStyleError, fontLato } from "./StringsNStyles";
 
 const Card2 = ({ intro, reply, source, msgStatus, img, caption }) => {
-  let msgStyle;
+  let msgStyle; //different depending whether the user got the question right or wrong
   if (msgStatus === 0) msgStyle = msgStyleError;
   else msgStyle = msgStyleSuccess;
 
