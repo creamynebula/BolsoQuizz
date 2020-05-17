@@ -147,7 +147,6 @@ const msgStyleSuccess = {
   borderRadius: "5px",
   padding: "10px",
   marginBottom: "10px",
-  opacity: 0.8,
 };
 
 const msgStyleError = {
@@ -158,7 +157,6 @@ const msgStyleError = {
   borderRadius: "5px",
   padding: "10px",
   marginBottom: "10px",
-  opacity: 0.9,
 };
 
 const whiteStyle = {
