@@ -25,7 +25,8 @@ figcaption {
 
 a {
   text-decoration: none;
-  color: #fde24f;
+  color: #00214d;
+  background-color: #fde24f;
 }
 
 a:hover {

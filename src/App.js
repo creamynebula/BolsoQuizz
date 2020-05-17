@@ -23,7 +23,7 @@ const getNewElement = (array, previousElement) => {
   return newElement;
 };
 
-let quoteIndex = getRandomIndex(quotesList);
+let quoteIndex = getRandomIndex(quotesList) % 7;
 
 let [
   totalRightAnswers,
@@ -132,8 +132,7 @@ function App() {
   const congratulationsMessage = () => {
     if (totalRightAnswers <= 10)
       return "Você não conhece muito bem o presidente, algumas pessoas diriam que isso é uma coisa boa. Continue assim!";
-    else
-      return "Você conhece bem o presidente, não sei se isso é bom ou ruim :)";
+    else return "Você conhece bem o presidente, não sei se isso é bom ou ruim";
   };
 
   if (!gameOver)
@@ -170,7 +169,7 @@ function App() {
         <div style={msgStyleSuccess}>
           <div style={fontLato}>
             <p>Game Over! Score: {`${totalRightAnswers}/${totalVotes}`}</p>
-            <p>{congratulationsMessage()}(´｡• ω •｡`)</p>
+            <p>{congratulationsMessage()} (´｡• ω •｡`)</p>
           </div>
           <br />
           <br />
