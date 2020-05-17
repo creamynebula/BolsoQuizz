@@ -7,8 +7,10 @@ import {
   msgStyleSuccess,
   whiteStyle,
   fontRoboto,
+  fontLato,
 } from "./components/StringsNStyles";
 import Card2 from "./components/Card2";
+import { CSSTransition } from "react-transition-group";
 
 const getRandomIndex = (array) => {
   let randomIndex = Math.floor(Math.random() * array.length);
@@ -42,6 +44,7 @@ function App() {
   const [intro, setIntro] = useState("");
   const [showButtons, setShowButtons] = useState(true);
   const [gameOver, setGameOver] = useState(false);
+  const [fade, setFade] = useState(false);
 
   const nextQuestion = () => {
     sentenceNumber = sentenceNumber + 1; //question 1/14 etc
@@ -49,8 +52,7 @@ function App() {
     quoteIndex = getRandomIndex(quotesList);
     setQuote(quotesList[quoteIndex]); //render next question
     setShowButtons(true); //return with the voting buttons
-    setIntro("");
-    setReply(""); //clears the 2nd card
+    setFade(false); //fade out the card
   };
 
   const handleVote = (event) => {
@@ -67,11 +69,13 @@ function App() {
       source = quote.fonte;
       img = "feliz01.jpg";
       caption = "Jair Bolsonaro";
+      setFade(true); //fade the card in
     } else {
       setReply(quote.fonte);
       source = "";
       img = quote.img;
       caption = quote.caption;
+      setFade(true);
     }
     let newIntro; //the intro contains an affirmative or negative statement, depending on whether the user got the question right
 
@@ -110,9 +114,7 @@ function App() {
     else
       return (
         <>
-          <p
-            style={whiteStyle}
-          >{`Próxima pergunta vindo automaticamente em ${counter} segundos`}</p>
+          <p style={whiteStyle}>{`Próxima pergunta em ${counter} segundos`}</p>
           <p>
             <button
               onClick={() => {
@@ -149,14 +151,16 @@ function App() {
         <div>
           <RenderButtons handleVote={handleVote} showButtons={showButtons} />
         </div>
-        <Card2
-          intro={intro}
-          reply={reply}
-          source={source}
-          msgStatus={rightAnswer}
-          img={img}
-          caption={caption}
-        />
+        <CSSTransition in={fade} timeout={300} classNames="fade" unmountOnExit>
+          <Card2
+            intro={intro}
+            reply={reply}
+            source={source}
+            msgStatus={rightAnswer}
+            img={img}
+            caption={caption}
+          />
+        </CSSTransition>
       </div>
     );
   //game over
@@ -164,28 +168,26 @@ function App() {
     return (
       <div className="App">
         <div style={msgStyleSuccess}>
-          <p>Game Over! Score: {`${totalRightAnswers}/${totalVotes}`}</p>
-          <p>{congratulationsMessage()}</p>
+          <div style={fontLato}>
+            <p>Game Over! Score: {`${totalRightAnswers}/${totalVotes}`}</p>
+            <p>{congratulationsMessage()}(´｡• ω •｡`)</p>
+          </div>
           <br />
-          <p>
-            Obrigado por jogar, espero que as sentenças tenham sido
-            interessantes de alguma forma (´｡• ω •｡`). Se você gostou, mostre
-            pros seus amigos!
-          </p>
           <br />
-          <p>
-            Feedback, trocar algum tipo de idéia ou oferta de trabalho (por
-            favor haha):{" "}
-            <a href="https://www.linkedin.com/in/mateus-souza-ab4aa1199/">
-              https://www.linkedin.com/in/mateus-souza-ab4aa1199/
-            </a>
-          </p>
-          <p>
-            Código:{" "}
-            <a href="https://github.com/creamynebula/BolsoQuizz">
-              https://github.com/creamynebula/BolsoQuizz
-            </a>{" "}
-          </p>
+          <div style={fontRoboto}>
+            <p>
+              Feedback, trocar algum tipo de idéia ou oferta de trabalho:{" "}
+              <a href="https://www.linkedin.com/in/mateus-souza-ab4aa1199/">
+                https://www.linkedin.com/in/mateus-souza-ab4aa1199/
+              </a>
+            </p>
+            <p>
+              Código:{" "}
+              <a href="https://github.com/creamynebula/BolsoQuizz">
+                https://github.com/creamynebula/BolsoQuizz
+              </a>{" "}
+            </p>
+          </div>
         </div>
         <div>
           <br />

@@ -10,7 +10,7 @@ body {
 
 img {
   border-radius: 20%;
-  max-width: 18vw;
+  max-width: 15vw;
   max-height: 15vw;
   padding: 5px;
   height: auto;
@@ -46,12 +46,22 @@ button:hover {
   background-color: #fde24f;
 }
 
-.roboto {
-  font-family: "Roboto", sans-serif;
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.9);
 }
-
-.lato {
-  font-family: "Lato", sans-serif;
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }
 
 .gradientText {
