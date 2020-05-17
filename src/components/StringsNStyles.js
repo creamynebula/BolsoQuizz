@@ -159,6 +159,18 @@ const msgStyleError = {
   marginBottom: "10px",
 };
 
+const whiteStyle = {
+  color: "white",
+};
+
+const fontLato = {
+  fontFamily: "Lato",
+};
+
+const fontRoboto = {
+  fontFamily: "Roboto",
+};
+
 export {
   quotesList,
   positiveIntros,
@@ -166,4 +178,7 @@ export {
   bolsonaroAutor,
   msgStyleSuccess,
   msgStyleError,
+  whiteStyle,
+  fontLato,
+  fontRoboto,
 };

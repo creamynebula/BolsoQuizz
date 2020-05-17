@@ -1,5 +1,5 @@
 import React from "react";
-import { msgStyleSuccess, msgStyleError } from "./StringsNStyles";
+import { msgStyleSuccess, msgStyleError, fontLato } from "./StringsNStyles";
 
 const Card2 = ({ intro, reply, source, msgStatus, img, caption }) => {
   let msgStyle;
@@ -27,9 +27,9 @@ const Card2 = ({ intro, reply, source, msgStatus, img, caption }) => {
             <em>{caption}</em>
           </figcaption>
         </figure>
-        <p></p>
         <p>{intro}</p>
-        <p>{reply}</p>
+        <br />
+        <p style={fontLato}>{reply}</p>
         {renderSource(source)}
       </div>
     );

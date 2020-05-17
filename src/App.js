@@ -5,12 +5,10 @@ import {
   negativeIntros,
   bolsonaroAutor,
   msgStyleSuccess,
+  whiteStyle,
+  fontRoboto,
 } from "./components/StringsNStyles";
 import Card2 from "./components/Card2";
-
-const whiteStyle = {
-  color: "white",
-};
 
 const getRandomIndex = (array) => {
   let randomIndex = Math.floor(Math.random() * array.length);
@@ -140,9 +138,11 @@ function App() {
     return (
       <div className="App">
         <div style={msgStyleSuccess}>
-          <p>
-            {sentenceNumber}/14 - "{quote.frase}"
-          </p>
+          <div style={fontRoboto}>
+            <p>
+              {sentenceNumber}/14 - "{quote.frase}"
+            </p>
+          </div>
           <br />
           <p>O autor da frase é o presidente Jair Bolsonaro?</p>
         </div>

@@ -46,6 +46,14 @@ button:hover {
   background-color: #fde24f;
 }
 
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+
 .gradientText {
   position: relative;
   color: transparent;
