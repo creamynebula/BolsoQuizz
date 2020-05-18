@@ -193,14 +193,16 @@ function App() {
           <br />
           <br />
         </div>
-        <Card2
-          intro={intro}
-          reply={reply}
-          source={source}
-          msgStatus={rightAnswer}
-          img={img}
-          caption={caption}
-        />
+        <CSSTransition in={fade} timeout={250} classNames="fade" unmountOnExit>
+          <Card2
+            intro={intro}
+            reply={reply}
+            source={source}
+            msgStatus={rightAnswer}
+            img={img}
+            caption={caption}
+          />
+        </CSSTransition>
       </div>
     );
 } //fim App
