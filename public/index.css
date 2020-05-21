@@ -11,7 +11,7 @@ body {
 img {
   border-radius: 20%;
   max-width: 18vw;
-  max-height: 18vw;
+  max-height: 18vh;
   padding: 5px;
   height: auto;
   display: block;

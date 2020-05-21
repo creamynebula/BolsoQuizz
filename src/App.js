@@ -99,9 +99,13 @@ function App() {
 
   const RenderButtons = ({ handleVote, showButtons }) => {
     const [counter, setCounter] = useState(delay);
+
     //if counter > 0, decrease counter after 1s, every time [counter] changes
     useEffect(() => {
-      counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+      let countDownEffect;
+      counter > 0 &&
+        (countDownEffect = setTimeout(() => setCounter(counter - 1), 1000));
+      return () => clearInterval(countDownEffect);
     }, [counter]);
 
     if (showButtons)
